@@ -71,8 +71,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'drf_vue_blog.wsgi.application'
 
 REST_FRAMEWORK = {
+    # 配置分野功能，每页文章数量设置为2
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 2,
+    # 使用django-filter过滤轮子，将它作为默认的过滤引擎后段，写入到配置文件中
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 # Database

@@ -121,3 +121,13 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    # 重写get_queryset方法实现过滤
+    # def get_queryset(self):
+    #     queryset = self.queryset
+    #     username = self.request.query_params.get('username', None)
+    #
+    #     if username is not None:
+    #         queryset = queryset.filter(author__username=username)
+    #
+    #     return queryset
