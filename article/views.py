@@ -11,7 +11,7 @@ from rest_framework.decorators import api_view, permission_classes
 #
 # from article.serializers import ArticleDetailSerializer
 # from article.serializers import ArticleListSerializer
-from article.models import Article
+from article.models import Article, Category
 from article.permissions import IsAdminUserOrReadOnly
 #
 #
@@ -110,7 +110,18 @@ from article.permissions import IsAdminUserOrReadOnly
 #     serializer_class = ArticleDetailSerializer
 
 from rest_framework import viewsets
-from article.serializers import ArticleSerializer
+from article.serializers import ArticleSerializer, CategorySerializer, CategoryDetailSerializer
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    """分类视图集"""
+    ...
+
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return CategorySerializer
+        else:
+            return CategoryDetailSerializer
 
 
 # @permission_classes((IsAdminUserOrReadOnly,))
