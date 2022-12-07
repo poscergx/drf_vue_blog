@@ -18,7 +18,7 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     """博文序列化器"""
     author = UserDescSerializer(read_only=True)
     # category 的嵌套序列化字段
-    category = CateGorySerializer(read_only=True)
+    category = CategorySerializer(read_only=True)
     # category 的 id 字段，用于创建/更新 category 外键
     category_id = serializers.IntegerField(write_only=True, allow_null=True, required=False)
 
